@@ -3,10 +3,6 @@ interface action{
   data?: any;
 }
 
-interface state{
-  count: number;
-}
-
 interface dispatch{
   type: String;
 }

@@ -13,25 +13,18 @@ class Store {
     this.subscribe = this.subscribe.bind(this);
   }
 
-  public dispatch(action: action): void {
+  public dispatch(action: action) {
     this.state = this.reducer(this.state, action);
-    this.listeners.forEach((listener: any): void => listener());
+    this.listeners.forEach((listener: any) => listener());
   }
 
-  public getState(): any {
+  public getState() {
     return this.state;
   }
 
-  public subscribe(listener: any): void {
+  public subscribe(listener: any) {
     this.listeners.push(listener);
   }
-}
-
-function applyMiddleware(store: Store, ...args: any[]): void {
-  const enArr: any[] = args.map((middleware: any): any => middleware({
-    dispatch: store.dispatch,
-    getState: store.getState
-  }));
 }
 
 export default Store;
