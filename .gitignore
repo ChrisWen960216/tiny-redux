@@ -1,1 +1,6 @@
+# package
 node_modules
+
+# dist
+.cache
+dist

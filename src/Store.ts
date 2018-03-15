@@ -1,9 +1,9 @@
 class Store {
   private listeners: any[];
-  private state: object;
+  private state: any;
   private reducer: any;
 
-  constructor(reducer: any, state: object = {}) {
+  constructor(reducer: any, state: any ) {
     this.state = state;
     this.listeners = [];
     this.reducer = reducer;
@@ -13,12 +13,12 @@ class Store {
     this.subscribe = this.subscribe.bind(this);
   }
 
-  public dispatch(action: string): void {
+  public dispatch(action: action): void {
     this.state = this.reducer(this.state, action);
     this.listeners.forEach((listener: any): void => listener());
   }
 
-  public getState(): object {
+  public getState(): any {
     return this.state;
   }
 
@@ -26,14 +26,6 @@ class Store {
     this.listeners.push(listener);
   }
 }
-
-// function reducer(state, action) {
-//   switch (action.type) {
-//     case 'ADD': {
-//       return { state, count: state.count + 1};
-//     }
-//   }
-// }
 
 function applyMiddleware(store: Store, ...args: any[]): void {
   const enArr: any[] = args.map((middleware: any): any => middleware({
